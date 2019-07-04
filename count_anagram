@@ -1,0 +1,41 @@
+#include<bits/stdc++.h> 
+using namespace std; 
+vector<string>v;
+void subString(string s, int n)  
+{ 
+    for (int i = 0; i < n; i++)  
+    {
+        for (int len = 1; len <= n - i; len++) 
+        {
+            string x=s.substr(i,len);
+            sort(x.begin(),x.end());
+            v.push_back(x);
+        }
+    }
+    int count=0;
+    for(int i=0;i<v.size();i++)
+    {
+        string strin=v[i];
+        for(int j=i+1;j<v.size();j++)
+        {
+            if(strin==v[j])
+                count++;
+        }
+    }
+    cout<<count<<"\n";
+} 
+
+int main()  
+{
+    int n;
+    cin>>n;
+    while(n--)
+    {
+        string s;
+        int count=0;
+        cin>>s; 
+        subString(s,s.length()); 
+        v.erase(v.begin(),v.end());
+    }
+    return 0; 
+} 
